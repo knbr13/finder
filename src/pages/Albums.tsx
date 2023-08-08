@@ -31,7 +31,7 @@ const Albums: React.FC = () => {
         <h2 className="text-sm md:text-base xl:text-lg">{artistName}</h2>
         <p className="text-xs md:text-sm xl:text-base text-gray-600">Albums</p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-10">
         {albums.map((album) => (
           <Album key={album.id} album={album} />
         ))}

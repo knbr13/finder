@@ -26,14 +26,14 @@ const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
 
   return (
     <div
-      className="flex border-2 border-gray-600 rounded-lg flex-col items-center justify-center bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300"
+      className="border border-gray-600 rounded-lg bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 relative"
       onClick={onClick}
     >
-      <div className="bg-gray-200 w-full p-4">
+      <div className="bg-gray-200 p-4">
         <img
           src={artist.images[0]?.url || SpotifyLogo}
           alt={artist.name}
-          className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 rounded-full"
+          className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 mt-0 rounded-full"
         />
       </div>
       <div className="py-4">

@@ -138,7 +138,7 @@ const Artist = () => {
             }
             artists={artists}
           />
-          <div className="flex space-x-4 mt-4">
+          <div className="flex space-x-4 mt-8">
             <button
               disabled={!artistObject?.artists.previous}
               className={
