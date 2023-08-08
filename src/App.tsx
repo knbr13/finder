@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect } from "react";
 import Login from "./pages/Login";
 import Artist from "./pages/ArtistPage";
+import Album from "./pages/Albums";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/artist" element={<Artist />} />
-          <Route path="/albums/:artistId" element={<div>albums</div>} />
+          <Route path="/album/:artistId" element={<Album />} />
           <Route path="*" element={<Redirector />} />
         </Routes>
       </BrowserRouter>

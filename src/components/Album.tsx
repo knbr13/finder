@@ -1,0 +1,56 @@
+import React from "react";
+
+interface AlbumProps {
+  album: {
+    name: string;
+    release_date: string;
+    total_tracks: number;
+    images: { url: string }[];
+    artists: { id: string; name: string }[];
+    external_urls: { spotify: string };
+  };
+}
+
+const Album: React.FC<AlbumProps> = ({ album }) => {
+  return (
+    <div className="flex flex-col relative items-center justify-start bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 h-80 overflow-scroll">
+      {" "}
+      <div className="bg-gray-200 w-full p-4">
+        <img
+          // TODO: add default photo instead of empty string
+          src={album.images[0]?.url || ""}
+          alt={album.name}
+          className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 mt-0 rounded-lg"
+        />
+      </div>
+      <div className="py-4">
+        <h2 className="text-md font-semibold text-center">{album.name}</h2>
+        <p className="text-sm text-gray-600 text-center mb-2">
+          Release Year: {album.release_date}
+        </p>
+        <p className="text-sm text-gray-600 text-center mb-2">
+          Total Tracks: {album.total_tracks}
+        </p>
+        <div className="flex flex-col">
+          <p className="text-xs text-gray-500 text-center mb-2">Artists:</p>
+          {album.artists.map((artist) => (
+            <div key={artist.id} className="text-sm text-center mb-1">
+              {artist.name}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="border bg-gray-100 w-full sticky bottom-0 text-center text-xs md:text-sm text-gray-500">
+        <a
+          href={album.external_urls.spotify}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Preview on Spotify
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default Album;
