@@ -1,27 +1,51 @@
-# React + TypeScript + Vite
+# Spotify Lite Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- ![Screenshot](./screenshot.png) -->
 
-Currently, two official plugins are available:
+A lightweight web app for exploring artists and albums on Spotify.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Search for artists
+- View artist albums
+- Preview albums on Spotify
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+These instructions will help you get a copy of the project up and running on your local machine.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+### Prerequisites
+
+- Node.js and npm (Node Package Manager) should be installed on your system. You can download them from [Node.js website](https://nodejs.org/).
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+   git clone https://github.com/abdullah-alaadine/spotify-lite.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Navigate to the project directory:
+
+```bash
+cd spotify-lite
+```
+
+3. Install dependencies using npm:
+
+```bash
+npm install
+```
+
+### Usage
+
+1. Rename .env.example to .env and replace the placeholder with your Spotify API credentials.
+2. Start the development server:
+
+```bash
+npm run dev
+```
+
+3. Open your browser and navigate to http://localhost:5173/.
+4. Search for artists and explore their albums!
