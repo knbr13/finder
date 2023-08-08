@@ -58,7 +58,7 @@ const Artist = () => {
   return (
     <div>
       <Searcher onChange={handleChange} />
-      <Artists artists={artists} />
+      <Artists onArtistClick={() => {}} artists={artists} />
     </div>
   );
 };

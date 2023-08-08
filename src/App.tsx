@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import { useEffect } from "react";
 import Login from "./pages/Login";
-import Artist from "./pages/Artist";
+import Artist from "./pages/ArtistPage";
 
 function App() {
   return (
