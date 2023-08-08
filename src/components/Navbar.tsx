@@ -8,18 +8,22 @@ const Navbar = () => {
     window.location.replace("/login");
   };
 
+  const isLoginPage = window.location.pathname === "/login";
+
   return (
     <nav className="bg-gradient-to-r from-green-700 to-green-500 p-4 flex items-center justify-between">
       <div className="flex items-center space-x-2">
         <img src={SpotifyLogo} className="w-8 h-8" alt="Spotify Logo" />
         <span className="text-white text-xl font-semibold">Spotify Lite</span>
       </div>
-      <button
-        onClick={onLogout}
-        className="px-4 py-2 rounded-lg bg-white text-green-600 font-semibold hover:bg-green-100 transition duration-300"
-      >
-        Logout
-      </button>
+      {!isLoginPage && (
+        <button
+          onClick={onLogout}
+          className="px-4 py-2 rounded-lg bg-white text-green-600 font-semibold hover:bg-green-100 transition duration-300"
+        >
+          Logout
+        </button>
+      )}
     </nav>
   );
 };
