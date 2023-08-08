@@ -55,9 +55,6 @@ const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
           ))}
         </div>
       </div>
-      <div className="border bg-gray-100 w-full text-center text-xs md:text-sm text-gray-500">
-        <a href={artist.external_urls.spotify}>Preview on Spotify</a>
-      </div>
     </div>
   );
 };
