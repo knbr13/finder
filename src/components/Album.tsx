@@ -17,9 +17,8 @@ export interface AlbumType {
 
 const Album: React.FC<AlbumProps> = ({ album }) => {
   return (
-    <div className="flex relative border-2 border-gray-600 rounded-lg flex-col items-center justify-start bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300">
-      {" "}
-      <div className="bg-gray-200 w-full p-4">
+    <div className="border border-gray-600 rounded-lg bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 relative">
+      <div className="bg-gray-200 p-4">
         <img
           src={album.images[0]?.url || SpotifyLogo}
           alt={album.name}
@@ -29,7 +28,7 @@ const Album: React.FC<AlbumProps> = ({ album }) => {
       <div className="py-4">
         <h2 className="text-md font-semibold text-center">{album.name}</h2>
         <p className="text-sm text-gray-600 text-center mb-2">
-          Release Year: {album.release_date}
+          {album.release_date}
         </p>
         <p className="text-sm text-gray-600 text-center mb-2">
           Total Tracks: {album.total_tracks}
@@ -43,7 +42,7 @@ const Album: React.FC<AlbumProps> = ({ album }) => {
           ))}
         </div>
       </div>
-      <div className="border bg-gray-100 w-full absolute bottom-0 text-center text-xs md:text-sm text-gray-500">
+      <div className="border bg-gray-100 text-center text-xs md:text-sm text-gray-500 absolute bottom-0 w-full p-2">
         <a
           href={album.external_urls.spotify}
           target="_blank"

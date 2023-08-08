@@ -26,17 +26,17 @@ const Albums: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <div className="w-full">
       <div className="w-11/12 m-auto relative top-4">
-        <h2 className=" text-sm md:text-base xl:text-lg">{artistName}</h2>
+        <h2 className="text-sm md:text-base xl:text-lg">{artistName}</h2>
         <p className="text-xs md:text-sm xl:text-base text-gray-600">Albums</p>
       </div>
-      <div className="grid place-content-center p-10 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-10">
         {albums.map((album) => (
           <Album key={album.id} album={album} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
