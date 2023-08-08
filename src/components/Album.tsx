@@ -17,7 +17,7 @@ export interface AlbumType {
 
 const Album: React.FC<AlbumProps> = ({ album }) => {
   return (
-    <div className="border border-gray-600 rounded-lg bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 relative">
+    <div className="border border-gray-600 rounded-lg bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 relative h-80 md:h-96 overflow-scroll">
       <div className="bg-gray-200 p-4">
         <img
           src={album.images[0]?.url || SpotifyLogo}

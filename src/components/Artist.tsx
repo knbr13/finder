@@ -26,7 +26,7 @@ const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
 
   return (
     <div
-      className="border border-gray-600 rounded-lg bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 relative"
+      className="border border-gray-600 rounded-lg bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 relative overflow-scroll"
       onClick={onClick}
     >
       <div className="bg-gray-200 p-4">
