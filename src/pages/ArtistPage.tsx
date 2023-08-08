@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Searcher from "../components/Searcher";
-import axios from "axios";
 import Artists from "../components/Artists";
 import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
 import { ArtistType } from "../components/Artist";
+import { makeGetRequest } from "../api/get";
 
 interface ArtistObject {
   artists: {
@@ -49,17 +49,15 @@ const Artist = () => {
         const searchValue = window.localStorage.getItem("searchValue");
         if (searchValue) {
           const getArtists = async () => {
-            const { data } = await axios.get(
+            const data = await makeGetRequest(
               "https://api.spotify.com/v1/search",
               {
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${token}`,
-                },
-                params: {
-                  q: searchValue,
-                  type: "artist",
-                },
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              {
+                q: searchValue,
+                type: "artist",
               }
             );
             setArtistObject(data);
@@ -85,16 +83,17 @@ const Artist = () => {
 
   useEffect(() => {
     const getArtists = async () => {
-      const { data } = await axios.get("https://api.spotify.com/v1/search", {
-        headers: {
+      const data = await makeGetRequest(
+        "https://api.spotify.com/v1/search",
+        {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        params: {
+        {
           q: searchValue,
           type: "artist",
-        },
-      });
+        }
+      );
       setArtistObject(data);
       setArtists(data.artists.items);
     };
@@ -108,23 +107,25 @@ const Artist = () => {
 
   const handleNext = async () => {
     0;
-    const { data } = await axios.get(artistObject?.artists.next as string, {
-      headers: {
+    const data = await makeGetRequest(
+      artistObject?.artists.next as string,
+      {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-      },
-    });
+      }
+    );
     setArtists(data.artists.items);
     setArtistObject(data);
   };
 
   const handlePrev = async () => {
-    const { data } = await axios.get(artistObject?.artists.previous as string, {
-      headers: {
+    const data = await makeGetRequest(
+      artistObject?.artists.previous as string,
+      {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-      },
-    });
+      }
+    );
     setArtists(data.artists.items);
     setArtistObject(data);
   };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Album, { AlbumType } from "../components/Album";
+import { makeGetRequest } from "../api/get";
 
 const Albums: React.FC = () => {
   const { artistId } = useParams();
@@ -14,9 +14,9 @@ const Albums: React.FC = () => {
 
     const getAlbums = async () => {
       try {
-        const { data } = await axios.get(
+        const data = await makeGetRequest(
           `https://api.spotify.com/v1/artists/${artistId}/albums/`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          { Authorization: `Bearer ${token}` }
         );
         setAlbums(data.items);
       } catch (error) {}
