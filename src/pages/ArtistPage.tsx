@@ -29,6 +29,7 @@ const Artist = () => {
       if (new Date(tokenExpiresOn) < new Date()) {
         localStorage.removeItem("tokenExpiresOn");
         localStorage.removeItem("token");
+        localStorage.removeItem("searchValue");
         alert("Session expired, please login again");
         navigate("/login");
       }
@@ -43,6 +44,9 @@ const Artist = () => {
     let token = window.localStorage.getItem("token") || "";
     if (!hash) {
       if (!token) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("tokenExpiresOn");
+        localStorage.removeItem("searchValue");
         navigate("/login");
       } else {
         setToken(token);

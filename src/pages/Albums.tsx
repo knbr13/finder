@@ -10,7 +10,12 @@ const Albums: React.FC = () => {
   const token = window.localStorage.getItem("token") as string;
 
   useEffect(() => {
-    if (!token) navigate("/login");
+    if (!token) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenExpiresOn");
+      localStorage.removeItem("searchValue");
+      navigate("/login");
+    }
 
     const getAlbums = async () => {
       try {
