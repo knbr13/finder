@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Searcher from "../components/Searcher";
 import axios from "axios";
 import Artists from "../components/Artists";
+import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
 
 const Artist = () => {
   const navigate = useNavigate();
@@ -93,12 +94,23 @@ const Artist = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center h-screen">
       <Searcher onChange={handleChange} />
-      <Artists
-        onArtistClick={(artistId) => navigate(`/album/${artistId}`)}
-        artists={artists}
-      />
+      {artists.length ? (
+        <Artists
+          onArtistClick={(artistId) => navigate(`/album/${artistId}`)}
+          artists={artists}
+        />
+      ) : (
+        <div className="bg-gradient-to-r from-green-200 to-green-400 relative p-4 sm:p-8 md:p-16 top-1/4 rounded-lg text-center">
+          <img
+            src={SpotifyLogo}
+            className="w-12 h-12 mb-2"
+            alt="Spotify Lite"
+          />
+          <p className="text-gray-700">Welcome to Spotify Lite</p>
+        </div>
+      )}
     </div>
   );
 };
