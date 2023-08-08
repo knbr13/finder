@@ -19,9 +19,7 @@ const Albums: React.FC = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setAlbums(data.items);
-      } catch (error) {
-        console.error("Error fetching albums:", error);
-      }
+      } catch (error) {}
     };
 
     getAlbums();
