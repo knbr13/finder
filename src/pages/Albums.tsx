@@ -13,7 +13,6 @@ const Albums: React.FC = () => {
     if (!token) navigate("/login");
 
     const getAlbums = async () => {
-      console.log("hello");
       try {
         const { data } = await axios.get(
           `https://api.spotify.com/v1/artists/${artistId}/albums/`,

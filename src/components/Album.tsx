@@ -13,7 +13,7 @@ interface AlbumProps {
 
 const Album: React.FC<AlbumProps> = ({ album }) => {
   return (
-    <div className="flex flex-col relative items-center justify-start bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300 h-80 overflow-scroll">
+    <div className="flex relative border-2 border-gray-600 rounded-lg flex-col items-center justify-center bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300">
       {" "}
       <div className="bg-gray-200 w-full p-4">
         <img
@@ -40,7 +40,7 @@ const Album: React.FC<AlbumProps> = ({ album }) => {
           ))}
         </div>
       </div>
-      <div className="border bg-gray-100 w-full sticky bottom-0 text-center text-xs md:text-sm text-gray-500">
+      <div className="border bg-gray-100 w-full absolute bottom-0 text-center text-xs md:text-sm text-gray-500">
         <a
           href={album.external_urls.spotify}
           target="_blank"

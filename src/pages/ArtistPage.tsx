@@ -18,6 +18,27 @@ const Artist = () => {
         navigate("/login");
       } else {
         setToken(token);
+        const searchValue = window.localStorage.getItem("searchValue");
+        if (searchValue) {
+          const getArtists = async () => {
+            const { data } = await axios.get(
+              "https://api.spotify.com/v1/search",
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                params: {
+                  q: searchValue,
+                  type: "artist",
+                },
+              }
+            );
+            setArtistObject(data);
+            setArtists(data.artists.items);
+          };
+          getArtists();
+        }
       }
     } else {
       token = hash
@@ -49,10 +70,9 @@ const Artist = () => {
     if (searchValue) getArtists();
   }, [searchValue]);
 
-  useEffect(() => console.log("artists:", artists), [artists]);
-
   const handleChange = (value: string) => {
     setSearchValue(value);
+    localStorage.setItem("searchValue", value);
   };
 
   return (

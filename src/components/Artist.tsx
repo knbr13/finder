@@ -23,7 +23,7 @@ const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center bg-white shadow-md hover:shadow-lg cursor-pointer transition duration-300"
+      className="flex border-2 border-gray-600 rounded-lg flex-col items-center justify-center bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300"
       onClick={onClick}
     >
       <div className="bg-gray-200 w-full p-4">
