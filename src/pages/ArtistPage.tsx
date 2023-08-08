@@ -4,6 +4,19 @@ import Searcher from "../components/Searcher";
 import axios from "axios";
 import Artists from "../components/Artists";
 import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
+import { ArtistType } from "../components/Artist";
+
+interface ArtistObject {
+  artists: {
+    href: string;
+    items: ArtistType[];
+    limit: number;
+    next: string | null;
+    offset: number;
+    previous: string | null;
+    total: number;
+  };
+}
 
 const Artist = () => {
   const navigate = useNavigate();
@@ -23,7 +36,7 @@ const Artist = () => {
   }, []);
   const [token, setToken] = useState<string>("");
   const [searchValue, setSearchValue] = useState<string>("");
-  const [artistObject, setArtistObject] = useState(null);
+  const [artistObject, setArtistObject] = useState<ArtistObject | null>(null);
   const [artists, setArtists] = useState([]);
   useEffect(() => {
     const hash = window.location.hash;
@@ -93,14 +106,62 @@ const Artist = () => {
     localStorage.setItem("searchValue", value);
   };
 
+  const handleNext = async () => {
+    0;
+    const { data } = await axios.get(artistObject?.artists.next as string, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setArtists(data.artists.items);
+    setArtistObject(data);
+  };
+
+  const handlePrev = async () => {
+    const { data } = await axios.get(artistObject?.artists.previous as string, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setArtists(data.artists.items);
+    setArtistObject(data);
+  };
+
   return (
     <div className="flex flex-col items-center h-screen">
       <Searcher onChange={handleChange} />
       {artists.length ? (
-        <Artists
-          onArtistClick={(artistId) => navigate(`/album/${artistId}`)}
-          artists={artists}
-        />
+        <>
+          <Artists
+            onArtistClick={(artistId) => navigate(`/album/${artistId}`)}
+            artists={artists}
+          />
+          <div className="flex space-x-4 mt-4">
+            <button
+              disabled={!artistObject?.artists.previous}
+              className={
+                "px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg focus:outline-none"
+                // !artistObject?.artists.previous && " bg-transparent"
+              }
+              onClick={handlePrev}
+            >
+              Prev
+            </button>
+
+            <button
+              disabled={!artistObject?.artists.next}
+              className={
+                "px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg focus:outline-none"
+                // !artistObject?.artists.next && " bg-transparent"
+              }
+              onClick={handleNext}
+            >
+              Next
+            </button>
+          </div>
+        </>
       ) : (
         <div className="bg-gradient-to-r from-green-200 to-green-400 relative p-4 sm:p-8 md:p-16 top-1/4 rounded-lg text-center">
           <img
