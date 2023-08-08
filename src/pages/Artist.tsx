@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Searcher from "../components/Searcher";
 import axios from "axios";
+import Artists from "../components/Artists";
 
 const Artist = () => {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ const Artist = () => {
   return (
     <div>
       <Searcher onChange={handleChange} />
+      <Artists artists={artists} />
     </div>
   );
 };
