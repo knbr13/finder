@@ -2,14 +2,17 @@ import React from "react";
 import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
 
 interface AlbumProps {
-  album: {
-    name: string;
-    release_date: string;
-    total_tracks: number;
-    images: { url: string }[];
-    artists: { id: string; name: string }[];
-    external_urls: { spotify: string };
-  };
+  album: AlbumType;
+}
+
+export interface AlbumType {
+  id: number;
+  name: string;
+  release_date: string;
+  total_tracks: number;
+  images: { url: string }[];
+  artists: { id: string; name: string }[];
+  external_urls: { spotify: string };
 }
 
 const Album: React.FC<AlbumProps> = ({ album }) => {

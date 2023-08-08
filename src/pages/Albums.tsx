@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import Album from "../components/Album";
+import Album, { AlbumType } from "../components/Album";
 
 const Albums: React.FC = () => {
   const { artistId } = useParams();
   const navigate = useNavigate();
-  const [albums, setAlbums] = useState<any[]>([]); // Update the type here
+  const [albums, setAlbums] = useState<AlbumType[]>([]);
   const token = window.localStorage.getItem("token") as string;
 
   useEffect(() => {
