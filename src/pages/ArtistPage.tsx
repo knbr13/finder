@@ -6,6 +6,20 @@ import Artists from "../components/Artists";
 
 const Artist = () => {
   const navigate = useNavigate();
+
+  window.addEventListener("click", () => {
+    const tokenExpiresOn = window.localStorage.getItem(
+      "tokenExpiresOn"
+    ) as string;
+    if (!tokenExpiresOn) return;
+    if (new Date(tokenExpiresOn) < new Date()) {
+      localStorage.removeItem("tokenExpiresOn");
+      localStorage.removeItem("token");
+      alert("Session expired, please login again");
+      navigate("/login");
+    }
+  });
+
   const [token, setToken] = useState<string>("");
   const [searchValue, setSearchValue] = useState<string>("");
   const [artistObject, setArtistObject] = useState(null);
