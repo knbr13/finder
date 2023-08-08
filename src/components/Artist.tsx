@@ -1,19 +1,21 @@
 import React from "react";
 
 interface ArtistProps {
-  artist: {
-    external_urls: { spotify: string };
-    followers: { href: string | null; total: number };
-    genres: string[];
-    href: string;
-    id: string;
-    images: { url: string }[];
-    name: string;
-    popularity: number;
-    type: string;
-    uri: string;
-  };
+  artist: ArtistType;
   onClick: () => void;
+}
+
+export interface ArtistType {
+  external_urls: { spotify: string };
+  followers: { href: string | null; total: number };
+  genres: string[];
+  href: string;
+  id: string;
+  images: { url: string }[];
+  name: string;
+  popularity: number;
+  type: string;
+  uri: string;
 }
 
 const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
