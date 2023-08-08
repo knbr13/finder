@@ -107,13 +107,10 @@ const Artist = () => {
 
   const handleNext = async () => {
     0;
-    const data = await makeGetRequest(
-      artistObject?.artists.next as string,
-      {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      }
-    );
+    const data = await makeGetRequest(artistObject?.artists.next as string, {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    });
     setArtists(data.artists.items);
     setArtistObject(data);
   };
@@ -136,7 +133,9 @@ const Artist = () => {
       {artists.length ? (
         <>
           <Artists
-            onArtistClick={(artistId) => navigate(`/album/${artistId}`)}
+            onArtistClick={(artist) =>
+              navigate(`/album/${artist.id}/${artist.name}`)
+            }
             artists={artists}
           />
           <div className="flex space-x-4 mt-4">

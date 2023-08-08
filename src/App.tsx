@@ -15,7 +15,7 @@ const App = () => {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/artist" element={<ArtistPage />} />
-            <Route path="/album/:artistId" element={<Album />} />
+            <Route path="/album/:artistId/:artistName" element={<Album />} />
             <Route path="*" element={<Redirector />} />
           </Routes>
         </BrowserRouter>

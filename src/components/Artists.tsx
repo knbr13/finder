@@ -13,7 +13,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, onArtistClick }) => {
         <Artist
           key={artist.id}
           artist={artist}
-          onClick={() => onArtistClick(artist.id)}
+          onClick={() => onArtistClick(artist)}
         />
       ))}
     </div>
