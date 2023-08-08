@@ -2,7 +2,7 @@ interface SearcherProps {
   onChange: (value: string) => void;
 }
 
-const Searcher = ({ onChange }: SearcherProps) => {
+const Searcher: React.FC<SearcherProps> = ({ onChange }) => {
   return (
     <div className="flex justify-center items-center p-4">
       <input
