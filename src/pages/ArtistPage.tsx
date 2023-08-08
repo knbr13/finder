@@ -48,6 +48,9 @@ const Artist = () => {
         ?.split("=")[1] as string;
       window.location.hash = "";
       window.localStorage.setItem("token", token);
+      const now = new Date();
+      const oneHourFromNow = new Date(now.getTime() + 60 * 60 * 1000);
+      window.localStorage.setItem("tokenExpiresOn", oneHourFromNow.toString());
       setToken(token);
     }
   }, []);

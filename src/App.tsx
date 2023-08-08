@@ -6,6 +6,20 @@ import Album from "./pages/Albums";
 import ArtistPage from "./pages/ArtistPage";
 
 function App() {
+  const navigate = useNavigate();
+  window.addEventListener("click", () => {
+    const tokenExpiresOn = window.localStorage.getItem(
+      "tokenExpiresOn"
+    ) as string;
+    if (!tokenExpiresOn) return;
+    if (new Date(tokenExpiresOn) < new Date()) {
+      localStorage.removeItem("tokenExpiresOn");
+      localStorage.removeItem("token");
+      alert("Session expired, please login again");
+      navigate("/login");
+    }
+  });
+
   return (
     <div>
       <BrowserRouter>
