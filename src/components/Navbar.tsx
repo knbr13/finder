@@ -1,13 +1,11 @@
-import { useNavigate } from "react-router-dom";
 import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const onLogout = () => {
     localStorage.removeItem("tokenExpiresOn");
     localStorage.removeItem("token");
     localStorage.removeItem("searchValue");
-    navigate("/login");
+    window.location.replace("/login");
   };
 
   return (
