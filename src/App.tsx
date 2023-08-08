@@ -4,19 +4,23 @@ import { useEffect } from "react";
 import Login from "./pages/Login";
 import Album from "./pages/Albums";
 import ArtistPage from "./pages/ArtistPage";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/artist" element={<ArtistPage />} />
-          <Route path="/album/:artistId" element={<Album />} />
-          <Route path="*" element={<Redirector />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/artist" element={<ArtistPage />} />
+            <Route path="/album/:artistId" element={<Album />} />
+            <Route path="*" element={<Redirector />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </>
   );
 };
 
