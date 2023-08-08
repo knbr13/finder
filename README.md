@@ -1,6 +1,6 @@
 # Spotify Lite Web App
 
-<!-- ![Screenshot](./screenshot.png) -->
+![Screenshot](/public/img/spotify-lite.png)
 
 A lightweight web app for exploring artists and albums on Spotify.
 
