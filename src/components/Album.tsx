@@ -1,4 +1,5 @@
 import React from "react";
+import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
 
 interface AlbumProps {
   album: {
@@ -17,8 +18,7 @@ const Album: React.FC<AlbumProps> = ({ album }) => {
       {" "}
       <div className="bg-gray-200 w-full p-4">
         <img
-          // TODO: add default photo instead of empty string
-          src={album.images[0]?.url || ""}
+          src={album.images[0]?.url || SpotifyLogo}
           alt={album.name}
           className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 mt-0 rounded-lg"
         />

@@ -1,6 +1,7 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
 
 interface ArtistProps {
   artist: ArtistType;
@@ -30,7 +31,7 @@ const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
     >
       <div className="bg-gray-200 w-full p-4">
         <img
-          src={artist.images[0]?.url || ""}
+          src={artist.images[0]?.url || SpotifyLogo}
           alt={artist.name}
           className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 rounded-full"
         />
