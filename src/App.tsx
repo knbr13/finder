@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/artist" element={<Artist />} />
-          <Route path="/albums" element={<div>albums</div>} />
+          <Route path="/albums/:artistId" element={<div>albums</div>} />
           <Route path="*" element={<Redirector />} />
         </Routes>
       </BrowserRouter>

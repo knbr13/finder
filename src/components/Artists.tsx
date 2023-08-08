@@ -1,8 +1,8 @@
 import React from "react";
-import Artist from "./Artist";
+import Artist, { ArtistType } from "./Artist";
 
 interface ArtistsProps {
-  artists: any[];
+  artists: ArtistType[];
   onArtistClick: (artist: any) => void;
 }
 
@@ -13,7 +13,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, onArtistClick }) => {
         <Artist
           key={artist.id}
           artist={artist}
-          onClick={() => onArtistClick(artist)}
+          onClick={() => onArtistClick(artist.id)}
         />
       ))}
     </div>

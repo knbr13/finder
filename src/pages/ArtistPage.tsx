@@ -58,7 +58,10 @@ const Artist = () => {
   return (
     <div>
       <Searcher onChange={handleChange} />
-      <Artists onArtistClick={() => {}} artists={artists} />
+      <Artists
+        onArtistClick={(artistId) => navigate(`/albums/${artistId}`)}
+        artists={artists}
+      />
     </div>
   );
 };
