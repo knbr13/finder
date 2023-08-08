@@ -13,7 +13,7 @@ interface AlbumProps {
 
 const Album: React.FC<AlbumProps> = ({ album }) => {
   return (
-    <div className="flex relative border-2 border-gray-600 rounded-lg flex-col items-center justify-center bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300">
+    <div className="flex relative border-2 border-gray-600 rounded-lg flex-col items-center justify-start bg-green-500 shadow-md hover:shadow-lg cursor-pointer transition duration-300">
       {" "}
       <div className="bg-gray-200 w-full p-4">
         <img
