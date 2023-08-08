@@ -21,10 +21,10 @@ const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
 
   return (
     <div
-      className="flex flex-col bg-white rounded-lg shadow-md hover:shadow-lg cursor-pointer transition duration-300"
+      className="flex flex-col items-center justify-center bg-white shadow-md hover:shadow-lg cursor-pointer transition duration-300"
       onClick={onClick}
     >
-      <div className="bg-gray-200 p-4">
+      <div className="bg-gray-200 w-full p-4">
         <img
           src={artist.images[0]?.url || ""}
           alt={artist.name}
@@ -52,6 +52,9 @@ const Artist: React.FC<ArtistProps> = ({ artist, onClick }) => {
             </svg>
           ))}
         </div>
+      </div>
+      <div className="border bg-gray-100 w-full text-center text-xs md:text-sm text-gray-500">
+        <a href={artist.external_urls.spotify}>Preview on Spotify</a>
       </div>
     </div>
   );
