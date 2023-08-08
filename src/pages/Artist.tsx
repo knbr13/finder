@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Searcher from "../components/Searcher";
+import axios from "axios";
 
 const Artist = () => {
   const navigate = useNavigate();
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [artistObject, setArtistObject] = useState(null);
+  const [artists, setArtists] = useState([]);
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token") || "";
@@ -24,7 +29,36 @@ const Artist = () => {
       setToken(token);
     }
   }, []);
-  return <div>Artist</div>;
+
+  useEffect(() => {
+    const getArtists = async () => {
+      const { data } = await axios.get("https://api.spotify.com/v1/search", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          q: searchValue,
+          type: "artist",
+        },
+      });
+      setArtistObject(data);
+      setArtists(data.artists.items);
+    };
+    if (searchValue) getArtists();
+  }, [searchValue]);
+
+  useEffect(() => console.log("artists:", artists), [artists]);
+
+  const handleChange = (value: string) => {
+    setSearchValue(value);
+  };
+
+  return (
+    <div>
+      <Searcher onChange={handleChange} />
+    </div>
+  );
 };
 
 export default Artist;

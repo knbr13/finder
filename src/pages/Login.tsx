@@ -4,7 +4,6 @@ import SpotifyLogo from "../assets/Spotify_logo_without_text.svg.png";
 const Login = () => {
   const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
   const REDIRECT_URI = import.meta.env.VITE_SPOTIFY_REDIRECT_URI;
-  console.log("REDIRECT_URI:", REDIRECT_URI);
   const AUTH_ENDPOINT = import.meta.env.VITE_SPOTIFY_AUTH_ENDPOINT;
   const RESPONSE_TYPE = import.meta.env.VITE_SPOTIFY_RESPONSE_TYPE;
 
