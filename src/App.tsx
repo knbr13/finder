@@ -14,7 +14,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/artist" element={<ArtistPage />} />
+            <Route path="/" element={<ArtistPage />} />
             <Route path="/album/:artistId/:artistName" element={<Album />} />
             <Route path="*" element={<Redirector />} />
           </Routes>
@@ -27,7 +27,7 @@ const App = () => {
 function Redirector() {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/artist"); // Redirect to /artist
+    navigate("/"); // Redirect to /artist
   }, []);
   return null; // Return null since no rendering is needed
 }
