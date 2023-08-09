@@ -106,7 +106,7 @@ const Artist = () => {
 
   const handleChange = (value: string) => {
     setSearchValue(value);
-    localStorage.setItem("searchValue", value);
+    if (value) localStorage.setItem("searchValue", value);
   };
 
   const handleNext = async () => {
