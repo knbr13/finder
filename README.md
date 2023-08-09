@@ -49,3 +49,6 @@ npm run dev
 
 3. Open your browser and navigate to http://localhost:5173/.
 4. Search for artists and explore their albums!
+
+### LICENSE
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/abdullah-alaadine/spotify-lite/blob/main/LICENSE) file for details.
