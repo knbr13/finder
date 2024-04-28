@@ -9,7 +9,7 @@ typedef struct {
     size_t capacity;  // Total capacity of the array
 } DynamicArray;
 
-DynamicArray *create_dynamic_array(char initial_capacity);
+DynamicArray *create_dynamic_array(size_t initial_capacity);
 void destroy_dynamic_array(DynamicArray *array);
 void dynamic_array_append(DynamicArray *array, char value);
 void dynamic_array_insert(DynamicArray *array, char index, char value);
