@@ -1,0 +1,9 @@
+{
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0, BreakBeforeBraces: Attach }",
+    "files.associations": {
+        "stdio.h": "c",
+        "limits.h": "c",
+        "iostream": "cpp",
+        "typeinfo": "c"
+    }
+}
