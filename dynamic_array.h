@@ -1,10 +1,12 @@
 #ifndef DYNAMIC_ARRAY_H
 #define DYNAMIC_ARRAY_H
 
+#include <stddef.h>
+
 typedef struct {
-    char *data;     // Pointer to the array data
-    char size;      // Current size of the array
-    char capacity;  // Total capacity of the array
+    char *data;       // Pointer to the array data
+    size_t size;      // Current size of the array
+    size_t capacity;  // Total capacity of the array
 } DynamicArray;
 
 DynamicArray *create_dynamic_array(char initial_capacity);
