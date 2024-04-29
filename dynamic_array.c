@@ -12,3 +12,8 @@ DynamicArray *create_dynamic_array(size_t initial_capacity) {
 
     return arr;
 }
+
+void destroy_dynamic_array(DynamicArray *arr) {
+    free(arr->data);
+    free(arr);
+}
