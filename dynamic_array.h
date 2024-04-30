@@ -11,6 +11,7 @@ typedef struct {
 
 DynamicArray *create_dynamic_array(size_t initial_capacity);
 void destroy_dynamic_array(DynamicArray *array);
+void dynamic_array_resize(DynamicArray *array, size_t new_capacity);
 void dynamic_array_append(DynamicArray *array, char value);
 void dynamic_array_set_at(DynamicArray *array, char index, char value);
 void dynamic_array_remove(DynamicArray *array, char index);
