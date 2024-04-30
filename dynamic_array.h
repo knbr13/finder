@@ -16,7 +16,7 @@ void dynamic_array_append(DynamicArray *array, char value);
 void dynamic_array_set_at(DynamicArray *array, char index, char value);
 char dynamic_array_pop(DynamicArray *array);
 void dynamic_array_print(DynamicArray *array);
-unsigned int dynamic_array_size(DynamicArray *array);
-unsigned int dynamic_array_capacity(DynamicArray *array);
+size_t dynamic_array_size(DynamicArray *array);
+size_t dynamic_array_capacity(DynamicArray *array);
 
 #endif
