@@ -49,3 +49,18 @@ void dynamic_array_set_at(DynamicArray *array, char index, char value) {
     }
     array->data[index] = value;
 }
+
+char dynamic_array_pop(DynamicArray *arr) {
+    if (arr->size == 0) {
+        return -1;
+    }
+    arr->size--;
+    char tmp = arr->data[arr->size];
+    if (arr->size <= (arr->capacity / 2)) {
+        arr->capacity /= 2;
+        if (arr->capacity == 0)
+            arr->capacity = 1;  // Set a minimum capacity of 1
+        arr->data = realloc(arr->data, arr->capacity * sizeof(char));
+    }
+    return tmp;
+}
