@@ -4,7 +4,14 @@
 
 DynamicArray *create_dynamic_array(size_t initial_capacity) {
     DynamicArray *arr = calloc(1, sizeof(DynamicArray));
+    if (arr == NULL) {
+        return NULL;
+    }
     char *underlying_arr = calloc(initial_capacity, sizeof(char));
+    if (underlying_arr == NULL) {
+        free(arr);
+        return NULL;
+    }
 
     arr->size = 0;
     arr->capacity = initial_capacity;
