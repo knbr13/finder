@@ -14,8 +14,10 @@ DynamicArray *create_dynamic_array(size_t initial_capacity) {
 }
 
 void destroy_dynamic_array(DynamicArray *arr) {
-    free(arr->data);
-    free(arr);
+    if (arr != NULL) {
+        free(arr->data);
+        free(arr);
+    }
 }
 
 void dynamic_array_append(DynamicArray *arr, char value) {
