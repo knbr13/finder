@@ -27,3 +27,10 @@ void dynamic_array_append(DynamicArray *arr, char value) {
     }
     arr->data[arr->size++] = value;
 }
+
+void dynamic_array_set_at(DynamicArray *array, char index, char value) {
+    if(index < 0 || index >= array->size) {
+        return;
+    }
+    array->data[index] = value;
+}
