@@ -46,6 +46,13 @@ void dynamic_array_append(DynamicArray *arr, char value) {
     arr->data[arr->size++] = value;
 }
 
+char dynamic_array_get_at(DynamicArray *array, size_t index) {
+    if (index >= array->size) {
+        return -1;
+    }
+    return array->data[index];
+}
+
 void dynamic_array_set_at(DynamicArray *array, char index, char value) {
     if (index < 0 || index >= array->size) {
         return;
