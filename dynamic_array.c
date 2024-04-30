@@ -68,3 +68,11 @@ char dynamic_array_pop(DynamicArray *arr) {
     }
     return tmp;
 }
+
+size_t dynamic_array_size(DynamicArray *array) {
+    return array->size;
+}
+
+size_t dynamic_array_capacity(DynamicArray *array) {
+    return array->capacity;
+}
