@@ -3,6 +3,9 @@
 #include <stdlib.h>
 
 DynamicArray *create_dynamic_array(size_t initial_capacity) {
+    if (initial_capacity < 1) {
+        return NULL;
+    }
     DynamicArray *arr = calloc(1, sizeof(DynamicArray));
     if (arr == NULL) {
         return NULL;
@@ -58,8 +61,9 @@ char dynamic_array_pop(DynamicArray *arr) {
     char tmp = arr->data[arr->size];
     if (arr->size <= (arr->capacity / 2)) {
         arr->capacity /= 2;
-        if (arr->capacity == 0)
+        if (arr->capacity == 0) {
             arr->capacity = 1;  // Set a minimum capacity of 1
+        }
         arr->data = realloc(arr->data, arr->capacity * sizeof(char));
     }
     return tmp;
