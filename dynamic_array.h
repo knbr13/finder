@@ -12,7 +12,7 @@ typedef struct {
 DynamicArray *create_dynamic_array(size_t initial_capacity);
 void destroy_dynamic_array(DynamicArray *array);
 void dynamic_array_append(DynamicArray *array, char value);
-void dynamic_array_insert(DynamicArray *array, char index, char value);
+void dynamic_array_set_at(DynamicArray *array, char index, char value);
 void dynamic_array_remove(DynamicArray *array, char index);
 void dynamic_array_print(DynamicArray *array);
 unsigned int dynamic_array_size(DynamicArray *array);
