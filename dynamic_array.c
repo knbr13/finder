@@ -20,6 +20,14 @@ void destroy_dynamic_array(DynamicArray *arr) {
     }
 }
 
+void dynamic_array_resize(DynamicArray *array, size_t new_capacity) {
+    array->data = realloc(array->data, new_capacity * sizeof(char));
+    array->capacity = new_capacity;
+    if (new_capacity > array->size) {
+        array->size = new_capacity;
+    }
+}
+
 void dynamic_array_append(DynamicArray *arr, char value) {
     if (arr->capacity == arr->size) {
         arr->capacity *= 2;
@@ -29,7 +37,7 @@ void dynamic_array_append(DynamicArray *arr, char value) {
 }
 
 void dynamic_array_set_at(DynamicArray *array, char index, char value) {
-    if(index < 0 || index >= array->size) {
+    if (index < 0 || index >= array->size) {
         return;
     }
     array->data[index] = value;
