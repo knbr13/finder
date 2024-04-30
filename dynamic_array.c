@@ -30,11 +30,11 @@ void destroy_dynamic_array(DynamicArray *arr) {
     }
 }
 
-void dynamic_array_resize(DynamicArray *array, size_t new_capacity) {
-    array->data = realloc(array->data, new_capacity * sizeof(char));
-    array->capacity = new_capacity;
-    if (new_capacity > array->size) {
-        array->size = new_capacity;
+void dynamic_array_resize(DynamicArray *arr, size_t new_capacity) {
+    arr->data = realloc(arr->data, new_capacity * sizeof(char));
+    arr->capacity = new_capacity;
+    if (new_capacity > arr->size) {
+        arr->size = new_capacity;
     }
 }
 
@@ -46,18 +46,18 @@ void dynamic_array_append(DynamicArray *arr, char value) {
     arr->data[arr->size++] = value;
 }
 
-char dynamic_array_get_at(DynamicArray *array, size_t index) {
-    if (index >= array->size) {
+char dynamic_array_get_at(DynamicArray *arr, size_t index) {
+    if (index >= arr->size) {
         return -1;
     }
-    return array->data[index];
+    return arr->data[index];
 }
 
-void dynamic_array_set_at(DynamicArray *array, char index, char value) {
-    if (index < 0 || index >= array->size) {
+void dynamic_array_set_at(DynamicArray *arr, char index, char value) {
+    if (index < 0 || index >= arr->size) {
         return;
     }
-    array->data[index] = value;
+    arr->data[index] = value;
 }
 
 char dynamic_array_pop(DynamicArray *arr) {
@@ -76,10 +76,10 @@ char dynamic_array_pop(DynamicArray *arr) {
     return tmp;
 }
 
-size_t dynamic_array_size(DynamicArray *array) {
-    return array->size;
+size_t dynamic_array_size(DynamicArray *arr) {
+    return arr->size;
 }
 
-size_t dynamic_array_capacity(DynamicArray *array) {
-    return array->capacity;
+size_t dynamic_array_capacity(DynamicArray *arr) {
+    return arr->capacity;
 }
