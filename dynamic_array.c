@@ -17,3 +17,11 @@ void destroy_dynamic_array(DynamicArray *arr) {
     free(arr->data);
     free(arr);
 }
+
+void dynamic_array_append(DynamicArray *arr, char value) {
+    if (arr->capacity == arr->size) {
+        arr->capacity *= 2;
+        arr->data = realloc(arr->data, arr->capacity * sizeof(char));
+    }
+    arr->data[arr->size++] = value;
+}
