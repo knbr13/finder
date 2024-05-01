@@ -53,7 +53,7 @@ char dynamic_array_get_at(DynamicArray *arr, size_t index) {
     return arr->data[index];
 }
 
-void dynamic_array_set_at(DynamicArray *arr, char index, char value) {
+void dynamic_array_set_at(DynamicArray *arr, size_t index, char value) {
     if (index < 0 || index >= arr->size) {
         return;
     }
