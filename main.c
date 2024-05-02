@@ -1,7 +1,11 @@
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#define CHAR_EQUAL(a, b, sensitive) \
+    ((sensitive) ? ((a) == (b)) : (tolower(a) == tolower(b)))
 
 typedef struct {
     char *line;
@@ -64,11 +68,11 @@ int search(char *line, char *search_value, bool case_sensitive) {
         if (search_value_len > line_len - i) {
             return -1;
         }
-        if (line[i] != search_value[0]) continue;
+        if (!CHAR_EQUAL(line[i], search_value[0], case_sensitive)) continue;
 
         bool equal = true;
         for (size_t j = 0; j < search_value_len; j++) {
-            if (line[i + j] != search_value[j]) {
+            if (!CHAR_EQUAL(line[i + j], search_value[j], case_sensitive)) {
                 equal = false;
                 break;
             }
