@@ -98,9 +98,20 @@ void print_colored_string(char *line, int start, int end) {
 
 int main(int argc, char **argv) {
     if (argc < 2) {
-        printf("Usage: %s <search keyword>\n", argv[0]);
+        printf("Usage: %s [-c] <search keyword>\n", argv[0]);
         return EXIT_FAILURE;
     }
+
+    bool case_sensitive = false;
+    char *search_keyword;
+
+    if (argc > 2 && strcmp(argv[1], "-c") == 0) {
+        case_sensitive = true;
+        search_keyword = argv[2];
+    } else {
+        search_keyword = argv[1];
+    }
+
     for (int i = 1;; i++) {
         LineResult line_result = readline(stdin);
         if (line_result.END_OF_FILE) {
@@ -110,10 +121,10 @@ int main(int argc, char **argv) {
         if (line_result.line == NULL) {
             return EXIT_FAILURE;
         }
-        int index = search(line_result.line, argv[1], true);
+        int index = search(line_result.line, search_keyword, case_sensitive);
         if (index >= 0) {
-            printf("%d:%d: ", i, index+1);
-            print_colored_string(line_result.line, index, index + strlen(argv[1]));
+            printf("%d:%d: ", i, index + 1);
+            print_colored_string(line_result.line, index, index + strlen(search_keyword));
             putchar('\n');
         }
         free(line_result.line);
