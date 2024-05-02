@@ -112,7 +112,7 @@ int main(int argc, char **argv) {
         }
         int index = search(line_result.line, argv[1], true);
         if (index >= 0) {
-            printf("%d:%d: ", i, index);
+            printf("%d:%d: ", i, index+1);
             print_colored_string(line_result.line, index, index + strlen(argv[1]));
             putchar('\n');
         }
