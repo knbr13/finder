@@ -30,3 +30,7 @@ To perform a case-insensitive (default behavior) search for "apple":
 ```bash
 finder "apple"
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
