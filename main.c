@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -51,21 +52,55 @@ int isLower(char c) {
     return c >= 'a' && c <= 'z';
 }
 
+int search(char *line, char *search_value, bool case_sensitive) {
+    size_t line_len = strlen(line);
+    size_t search_value_len = strlen(search_value);
+
+    if (search_value_len > line_len) {
+        return -1;
+    }
+
+    for (size_t i = 0; line[i] != '\0'; i++) {
+        if (search_value_len > line_len - i) {
+            return -1;
+        }
+        if (line[i] != search_value[0]) continue;
+
+        bool equal = true;
+        for (size_t j = 0; j < search_value_len; j++) {
+            if (line[i + j] != search_value[j]) {
+                equal = false;
+                break;
+            }
+        }
+        if (equal) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 int main(int argc, char **argv) {
     if (argc < 2) {
         printf("Usage: %s <search keyword>\n", argv[0]);
         return EXIT_FAILURE;
     }
     while (1 != 0) {
-        LineResult line = readline(stdin);
-        if (line.END_OF_FILE) {
-            break;
+        LineResult line_result = readline(stdin);
+        if (line_result.END_OF_FILE) {
+            free(line_result.line);
+            return EXIT_SUCCESS;
         }
-        int i;
-        if (i = strstr(line.line, argv[1]) != NULL) {
-            printf("%d: %s\n", i, line.line);
+        if (line_result.line == NULL) {
+            return EXIT_FAILURE;
         }
-        free(line.line);
+        int index = search(line_result.line, argv[1], true);
+        if (index == -1) {
+            printf("Not found\n");
+        } else {
+            printf("Found at %d\n", index);
+        }
+        free(line_result.line);
     }
 
     return EXIT_SUCCESS;
