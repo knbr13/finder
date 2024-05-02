@@ -47,6 +47,10 @@ int isUpper(char c) {
     return c >= 'A' && c <= 'Z';
 }
 
+int isLower(char c) {
+    return c >= 'a' && c <= 'z';
+}
+
 int main(int argc, char **argv) {
     if (argc < 2) {
         printf("Usage: %s <search keyword>\n", argv[0]);
