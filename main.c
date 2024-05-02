@@ -87,7 +87,7 @@ int search(char *line, char *search_value, bool case_sensitive) {
 void print_colored_string(char *line, int start, int end) {
     for (int i = 0; line[i] != '\0'; i++) {
         if (i == start) {
-            printf("\033[31m");
+            printf("\033[32m");
         }
         if (i == end) {
             printf("\033[0m");  // reset the color
