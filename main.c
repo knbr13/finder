@@ -94,6 +94,7 @@ void print_colored_string(char *line, int start, int end) {
         }
         putchar(line[i]);
     }
+    printf("\033[0m");
 }
 
 int main(int argc, char **argv) {
