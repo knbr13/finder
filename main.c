@@ -84,6 +84,18 @@ int search(char *line, char *search_value, bool case_sensitive) {
     return -1;
 }
 
+void print_colored_string(char *line, int start, int end) {
+    for (int i = 0; line[i] != '\0'; i++) {
+        if (i == start) {
+            printf("\033[31m");
+        }
+        if (i == end) {
+            printf("\033[0m");  // reset the color
+        }
+        putchar(line[i]);
+    }
+}
+
 int main(int argc, char **argv) {
     if (argc < 2) {
         printf("Usage: %s <search keyword>\n", argv[0]);
@@ -100,7 +112,9 @@ int main(int argc, char **argv) {
         }
         int index = search(line_result.line, argv[1], true);
         if (index >= 0) {
-            printf("%d:%d: %s\n", i, index, line_result.line);
+            printf("%d:%d: ", i, index);
+            print_colored_string(line_result.line, index, index + strlen(argv[1]));
+            putchar('\n');
         }
         free(line_result.line);
     }
