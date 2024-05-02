@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct {
     char *line;
@@ -42,9 +43,26 @@ LineResult readline(FILE *stream) {
     return (LineResult){.line = buf, .END_OF_FILE = 0};
 }
 
-int main() {
-    printf("enter your name: ");
-    LineResult res = readline(stdin);
-    printf("'%s'\n", res.line);
-    return 0;
+int isUpper(char c) {
+    return c >= 'A' && c <= 'Z';
+}
+
+int main(int argc, char **argv) {
+    if (argc < 2) {
+        printf("Usage: %s <search keyword>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+    while (1 != 0) {
+        LineResult line = readline(stdin);
+        if (line.END_OF_FILE) {
+            break;
+        }
+        int i;
+        if (i = strstr(line.line, argv[1]) != NULL) {
+            printf("%d: %s\n", i, line.line);
+        }
+        free(line.line);
+    }
+
+    return EXIT_SUCCESS;
 }
