@@ -99,9 +99,7 @@ int main(int argc, char **argv) {
             return EXIT_FAILURE;
         }
         int index = search(line_result.line, argv[1], true);
-        if (index == -1) {
-            printf("Not found\n");
-        } else {
+        if (index >= 0) {
             printf("%d:%d: %s\n", i, index, line_result.line);
         }
         free(line_result.line);
