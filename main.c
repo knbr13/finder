@@ -89,7 +89,7 @@ int main(int argc, char **argv) {
         printf("Usage: %s <search keyword>\n", argv[0]);
         return EXIT_FAILURE;
     }
-    while (1 != 0) {
+    for (int i = 1;; i++) {
         LineResult line_result = readline(stdin);
         if (line_result.END_OF_FILE) {
             free(line_result.line);
@@ -102,7 +102,7 @@ int main(int argc, char **argv) {
         if (index == -1) {
             printf("Not found\n");
         } else {
-            printf("Found at %d\n", index);
+            printf("%d:%d: %s\n", i, index, line_result.line);
         }
         free(line_result.line);
     }
