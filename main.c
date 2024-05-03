@@ -84,19 +84,6 @@ int search(char *line, char *search_value, bool case_sensitive) {
     return -1;
 }
 
-void print_colored_string(char *line, int start, int end) {
-    for (int i = 0; line[i] != '\0'; i++) {
-        if (i == start) {
-            printf("\033[32m");
-        }
-        if (i == end) {
-            printf("\033[0m");  // reset the color
-        }
-        putchar(line[i]);
-    }
-    printf("\033[0m");
-}
-
 int main(int argc, char **argv) {
     if (argc < 2) {
         printf("Usage: %s [-c] <search keyword>\n", argv[0]);
@@ -122,12 +109,53 @@ int main(int argc, char **argv) {
         if (line_result.line == NULL) {
             return EXIT_FAILURE;
         }
-        int index = search(line_result.line, search_keyword, case_sensitive);
-        if (index >= 0) {
-            printf("%d:%d: ", i, index + 1);
-            print_colored_string(line_result.line, index, index + strlen(search_keyword));
-            putchar('\n');
+
+        size_t line_len = strlen(line_result.line);
+        size_t search_value_len = strlen(search_keyword);
+
+        if (search_value_len > line_len) {
+            free(line_result.line);
+            continue;
         }
+
+        bool found = false;
+        int offset = 0;
+        for (size_t j = 0; line_result.line[j] != '\0';) {
+            if (search_value_len > line_len - j) {
+                break;
+            }
+            if (!CHAR_EQUAL(line_result.line[j], search_keyword[0], case_sensitive)) {
+                j++;
+                continue;
+            };
+
+            bool equal = true;
+            for (size_t k = 0; k < search_value_len; k++) {
+                if (!CHAR_EQUAL(line_result.line[j + k], search_keyword[k], case_sensitive)) {
+                    equal = false;
+                    j++;
+                    break;
+                }
+            }
+            if (equal) {
+                if (!found) printf("%d:%zu: ", i, j + 1);
+                found = true;
+                for (; offset < j; offset++) {
+                    putchar(line_result.line[offset]);
+                }
+                printf("\033[32m");
+                printf("%s", search_keyword);
+                printf("\033[0m");
+                offset += strlen(search_keyword);
+                j += strlen(search_keyword);
+            }
+        }
+        if (offset != 0 && offset < line_len) {
+            for (; offset < line_len; offset++) {
+                putchar(line_result.line[offset]);
+            }
+        }
+        if (found) putchar('\n');
         free(line_result.line);
     }
 
