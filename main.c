@@ -56,34 +56,6 @@ int isLower(char c) {
     return c >= 'a' && c <= 'z';
 }
 
-int search(char *line, char *search_value, bool case_sensitive) {
-    size_t line_len = strlen(line);
-    size_t search_value_len = strlen(search_value);
-
-    if (search_value_len > line_len) {
-        return -1;
-    }
-
-    for (size_t i = 0; line[i] != '\0'; i++) {
-        if (search_value_len > line_len - i) {
-            return -1;
-        }
-        if (!CHAR_EQUAL(line[i], search_value[0], case_sensitive)) continue;
-
-        bool equal = true;
-        for (size_t j = 0; j < search_value_len; j++) {
-            if (!CHAR_EQUAL(line[i + j], search_value[j], case_sensitive)) {
-                equal = false;
-                break;
-            }
-        }
-        if (equal) {
-            return i;
-        }
-    }
-    return -1;
-}
-
 int main(int argc, char **argv) {
     if (argc < 2) {
         printf("Usage: %s [-c] <search keyword>\n", argv[0]);
