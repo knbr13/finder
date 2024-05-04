@@ -115,6 +115,7 @@ int main(int argc, char **argv) {
                 for (; offset < j; offset++) {
                     putchar(line_result.line[offset]);
                 }
+                printf("\033[1m");
                 printf("\033[32m");
                 printf("%s", search_keyword);
                 printf("\033[0m");
