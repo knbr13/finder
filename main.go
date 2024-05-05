@@ -8,6 +8,8 @@ import (
 	"log"
 	"os"
 	"strings"
+
+	"github.com/fatih/color"
 )
 
 func main() {
@@ -45,7 +47,7 @@ func main() {
 			if idx == -1 {
 				if invertMatch {
 					if lineNumNotPrinted {
-						fmt.Printf("line: %d: ", lineNum)
+						fmt.Printf("line %3d: ", lineNum)
 						lineNumNotPrinted = false
 					}
 					fmt.Printf(line[start:])
@@ -55,14 +57,11 @@ func main() {
 				break
 			}
 			if lineNumNotPrinted {
-				fmt.Printf("line: %d: ", lineNum)
+				fmt.Printf("line: %3d: ", lineNum)
 				lineNumNotPrinted = false
 			}
 			fmt.Printf(line[start : start+idx])
-			fmt.Printf("\033[32m")
-			fmt.Printf("\033[1m")
-			fmt.Print(searchKeyword)
-			fmt.Printf("\033[0m")
+			fmt.Print(color.GreenString(searchKeyword))
 			start += idx + len(searchKeyword)
 		}
 		if start > 0 {
